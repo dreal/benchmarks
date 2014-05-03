@@ -22,7 +22,7 @@ Send an email to soonhok@cs.cmu.edu including:
 
  - Benchmark files (``.smt2``, ``.drh``, etc)
  - Short description about the benchmark
- - (Optional) Expected answers for the files (``UNSAT``, ``SAT`` with assignments)
+ - (Optional) Expected answers for the files (``UNSAT`` or ``SAT`` with assignments)
  - (Optional) License
  - (Optional) Instructions to generate the benchmark
 
