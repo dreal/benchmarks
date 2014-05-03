@@ -21,9 +21,9 @@ Instructions
 Send an email to soonhok@cs.cmu.edu including:
 
  - Benchmark files (``.smt2``, ``.drh``, etc)
- - Short description about the benchmark
+ - Short description about the benchmark including authors and sources
  - (Optional) Expected answers for the files (``UNSAT`` or ``SAT`` with assignments)
- - (Optional) License
+ - (Optional) License and Citations if any
  - (Optional) Instructions to generate the benchmark
 
 Feel free to fork the ``dreal/benchmark`` repository and make a [pull-request][github-pr].
