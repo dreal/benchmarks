@@ -9,11 +9,16 @@ DREAL-exists:;	@which $(DREAL) > /dev/null
 
 intro: check
 	@echo "There are following tests:\n"
-	@for X in `echo $(GOALS)`; do echo "    - $$X"; done; echo ""
+	@for GOAL in `echo $(GOALS)`; do echo "    - $$GOAL"; done; echo ""
 	@echo "Please type 'make <TEST>' to run a test."
 	@echo "You can also do 'make all' to run all the tests.\n"
 
 all: check $(GOALS)
 
 %: %.smt2
-	$(DREAL) $(DREAL_OPT) $<
+	$(DREAL) $(DREAL_OPT) $(shell [ -e $<.option ] && cat $<.option) $<
+
+clean:
+	-rm -f *.proof
+
+.DEFAULT_GOAL=intro
