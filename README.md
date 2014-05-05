@@ -1,5 +1,7 @@
 dReal Benchmarks
 ================
+Please check inside each folder for detailed author information, references, etc. 
+
  - [Flyspeck](flyspeck): Nonlinear inequalities from [Flyspeck project][flyspeck] (formal proof of [Kepler Conjecture][kepler])
  - [Microfluidics](microfluidics): Design of microfluidic chips
  - [Atrial Fibrillation](atrial_fibrillation): Atrial fibrillation model
@@ -11,11 +13,11 @@ dReal Benchmarks
 Contribute
 ==========
 
-To contribute your benchmark to the dReal repository, you could:
+We look forward to your contribution to the benchmark repository, through either of the following ways: 
 
-1. Fork the ``dreal/benchmark`` repository and make a [pull-request][github-pr].
+- Fork the ``dreal/benchmark`` repository and make a [pull-request][github-pr].
 
-2. Send an email to {soonhok,sicung}@cs.cmu.edu with:
+- Send an email to {soonhok,sicung}@cs.cmu.edu with:
 
  - Benchmark files (``.smt2``, ``.drh``, etc). We could always discuss about the format. 
  - Short description about the benchmark including authors and sources
