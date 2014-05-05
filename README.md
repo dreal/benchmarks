@@ -8,26 +8,19 @@ dReal Benchmarks
 [flyspeck]: https://code.google.com/p/flyspeck/
 [kepler]: http://en.wikipedia.org/wiki/Kepler_conjecture
 
+Contribute
+==========
 
-Want to Add Your Benchmarks?
-============================
+To contribute your benchmark to the dReal repository, you could:
 
-We are more than happy to host your benchmarks:
+1. Fork the ``dreal/benchmark`` repository and make a [pull-request][github-pr].
 
- - Regression Test: We use the benchmarks to test our new releases.
- - Optimization: We use the benchmarks to fine-tune the solvers.
+2. Send an email to {soonhok,sicung}@cs.cmu.edu with:
 
-Instructions
-------------
-
-Send an email to soonhok@cs.cmu.edu including:
-
- - Benchmark files (``.smt2``, ``.drh``, etc)
+ - Benchmark files (``.smt2``, ``.drh``, etc). We could always discuss about the format. 
  - Short description about the benchmark including authors and sources
  - (Optional) Expected answers for the files (``UNSAT`` or ``SAT`` with assignments)
  - (Optional) License and Citations if any
  - (Optional) Instructions to generate the benchmark
-
-Feel free to fork the ``dreal/benchmark`` repository and make a [pull-request][github-pr].
 
 [github-pr]:https://help.github.com/articles/using-pull-requests
