@@ -2,6 +2,7 @@ DREACH = dReach
 DREACH_OPT =
 
 DRH_FILES := $(wildcard *.drh)
+DRH_FILES := $(filter-out $(wildcard *.preprocessed.drh), $(DRH_FILES))
 GOALS := $(DRH_FILES:.drh=)
 
 check: DREACH-exists
