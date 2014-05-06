@@ -93,7 +93,7 @@
 // proportional - integral control for pitch rate / pitch angle tracking
 #define KP 1.2
 #define KI 0.6
-#define def_elev def_elev_eq + KP*(qDes - q) + KI*(thetaDes - theta)
+#define def_elev (def_elev_eq + KP*(qDes - q) + KI*(thetaDes - theta))
 #define def_rud 0
 #define def_ail 0
 
@@ -108,35 +108,35 @@
 #define Minv_vp22 25.6101
 
 // rotation matrix for linear velocity
-#define J1_11 cos(psi)*cos(theta)
-#define J1_12 cos(psi)*sin(theta)*sin(phi)-sin(psi)*cos(theta)
-#define J1_13 sin(psi)*sin(phi)+cos(psi)*cos(phi)*sin(theta)
-#define J1_21 sin(psi)*cos(theta)
-#define J1_22 cos(psi)*cos(phi)+sin(phi)*sin(theta)*sin(psi)
-#define J1_23 sin(theta)*sin(psi)*cos(phi)-cos(psi)*sin(phi)
-#define J1_31 -sin(theta)
-#define J1_32 cos(theta)*sin(psi)
-#define J1_33 cos(theta)*cos(phi)
+#define J1_11 (cos(psi)*cos(theta))
+#define J1_12 (cos(psi)*sin(theta)*sin(phi)-sin(psi)*cos(theta))
+#define J1_13 (sin(psi)*sin(phi)+cos(psi)*cos(phi)*sin(theta))
+#define J1_21 (sin(psi)*cos(theta))
+#define J1_22 (cos(psi)*cos(phi)+sin(phi)*sin(theta)*sin(psi))
+#define J1_23 (sin(theta)*sin(psi)*cos(phi)-cos(psi)*sin(phi))
+#define J1_31 (-sin(theta))
+#define J1_32 (cos(theta)*sin(psi))
+#define J1_33 (cos(theta)*cos(phi))
 
 // rotation matirx for angular velocity
 #define J2_11 1
-#define J2_12 sin(phi)*sin(theta)/cos(theta)
-#define J2_13 cos(phi)*sin(theta)/cos(theta)
+#define J2_12 (sin(phi)*sin(theta)/cos(theta))
+#define J2_13 (cos(phi)*sin(theta)/cos(theta))
 #define J2_21 0
-#define J2_22 cos(phi)
-#define J2_23 -sin(phi)
+#define J2_22 (cos(phi))
+#define J2_23 (-sin(phi))
 #define J2_31 0
-#define J2_32 sin(phi)/cos(theta)
-#define J2_33 cos(phi)/cos(theta)
+#define J2_32 (sin(phi)/cos(theta))
+#define J2_33 (cos(phi)/cos(theta))
 
 // force and torque expressions
-#define Fu thrust_eq - (m*zCG*r*p + mz*w*q - m*v*r) - (-Xu*u - Xuu*sqrt(u*u)*u) - (W-B)*sin(theta)
-#define Fv Ffin * u*u * def_rud  - (-mz*w*p + m*zCG*r*q + mx*u*r) - (-Yv*v - Yvv*sqrt(v*v)*v - Yr*r - Yrr*sqrt(r*r)*r) - (Lvv*v + Lvr*r) - (B-W)*cos(theta)*sin(phi)
-//#define Fw Ffin * u*u * def_elev - ((-m*zCG*p+my*v)*p - (m*zCG*q+mx*u)*q) - (-Zw*w - Zww*sqrt(w*w)*w - Zq*q - Zqq*sqrt(q*q)*q) - (Lww*w + Lwq*q) - (B-W)*cos(theta)*cos(phi)
-#define Fw Ffin * u*u * def_elev - (-m*zCG*p*p + my*v*p) + (m*zCG*q*q + mx*u*q) - (-Zw*w - Zww*sqrt(w*w)*w - Zq*q - Zqq*sqrt(q*q)*q) - (Lww*w + Lwq*q) - (B-W)*cos(theta)*cos(phi)
-#define Tp Mfin * u*u * def_ail  - (-m*zCG*r*u + mz*w*v + (m*zCG*p-my*v)*w + Iz*r*q - Iy*q*r) - (-Kp*p - Kpp*sqrt(p*p)*p) - zCG*W*cos(theta)*sin(phi)
-#define Tq Mfin * u*u * def_elev - (-mz*w*u - m*zCG*r*v + m*zCG*q*w + mx*u*w - Iz*p*r + Ix*p*r) - (-Mw*w - Mq*q - Mww*sqrt(w*w)*w - Mqq*sqrt(q*q)*q) - (Lqw*w + Lqq*q) - zCG*W*sin(theta)
-#define Tr Mfin * u*u * def_rud  - (my*v*u - mx*u*v + Iy*q*p - Ix*p*q) - (-Nv*v - Nvv*sqrt(v*v)*v - Nr*r - Nrr*sqrt(r*r)*r) - (Lrv*v + Lrr*r)
+#define Fu (thrust_eq - (m*zCG*r*p + mz*w*q - m*v*r) - (-Xu*u - Xuu*abs(u)*u) - (W-B)*sin(theta))
+#define Fv (Ffin * u*u * def_rud  - (-mz*w*p + m*zCG*r*q + mx*u*r) - (-Yv*v - Yvv*abs(v)*v - Yr*r - Yrr*abs(r)*r) - (Lvv*v + Lvr*r) - (B-W)*cos(theta)*sin(phi))
+//#define Fw Ffin * u*u * def_elev - ((-m*zCG*p+my*v)*p - (m*zCG*q+mx*u)*q) - (-Zw*w - Zww*abs(w)*w - Zq*q - Zqq*abs(q)*q) - (Lww*w + Lwq*q) - (B-W)*cos(theta)*cos(phi))
+#define Fw (Ffin * u*u * def_elev - (-m*zCG*p*p + my*v*p) + (m*zCG*q*q + mx*u*q) - (-Zw*w - Zww*abs(w)*w - Zq*q - Zqq*abs(q)*q) - (Lww*w + Lwq*q) - (B-W)*cos(theta)*cos(phi))
+#define Tp (Mfin * u*u * def_ail  - (-m*zCG*r*u + mz*w*v + (m*zCG*p-my*v)*w + Iz*r*q - Iy*q*r) - (-Kp*p - Kpp*abs(p)*p) - zCG*W*cos(theta)*sin(phi))
+#define Tq (Mfin * u*u * def_elev - (-mz*w*u - m*zCG*r*v + m*zCG*q*w + mx*u*w - Iz*p*r + Ix*p*r) - (-Mw*w - Mq*q - Mww*abs(w)*w - Mqq*abs(q)*q) - (Lqw*w + Lqq*q) - zCG*W*sin(theta))
+#define Tr (Mfin * u*u * def_rud  - (my*v*u - mx*u*v + Iy*q*p - Ix*p*q) - (-Nv*v - Nvv*abs(v)*v - Nr*r - Nrr*abs(r)*r) - (Lrv*v + Lrr*r))
 
 [-50, 50] rx;
 [-50, 50] ry;
