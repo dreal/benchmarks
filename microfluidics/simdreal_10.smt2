@@ -1,3 +1,4 @@
+(set-option :precision 0.002504)
 (set-logic QF_NRA)
 (declare-fun ax () Real)
 (declare-fun bx () Real)
