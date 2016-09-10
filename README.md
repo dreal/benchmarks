@@ -1,19 +1,4 @@
-dReal Benchmarks
-================
-
-Please check inside each folder for detailed author information,
-references, etc.
-
- - [Flyspeck](flyspeck): Nonlinear inequalities from [Flyspeck project][flyspeck] (formal proof of [Kepler Conjecture][kepler])
- - [Microfluidics](microfluidics): Design of microfluidic chips
- - [Atrial Fibrillation](atrial_fibrillation): Atrial fibrillation model
- - [Prostate Cancer](prostate_cancer): Prostate cancer model
- - [AUV](auv): Autonomous Underwater Vehicle
-
-[flyspeck]: https://code.google.com/p/flyspeck/
-[kepler]: http://en.wikipedia.org/wiki/Kepler_conjecture
-
-Contribute
+How to Contribute
 ==========
 
 We look forward to your contribution to the benchmark repository,
