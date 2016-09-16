@@ -1,10 +1,17 @@
-include ../nra_ode.mk
+DREACH = ../../../bin/dReach
+OPT =
 
 k2:
-	$(DREACH) -k 2  scaled_prostate.drh --precision=0.005 --visualize $(DREACH_OPT)
+	$(DREACH) -l 2 -k 2 scaled_prostate_infix.drh --precision 0.005 --visualize $(OPT)
 
 k2-precise:
-	$(DREACH) -k 2 scaled_prostate.drh --precision=0.002 --visualize $(DREACH_OPT)
+	$(DREACH) -l 2 -k 2 scaled_prostate_infix.drh --precision 0.002 --visualize $(OPT)
 
 full:
-	$(DREACH) -k 6 scaled_prostate_full.drh --precision=0.005 --visualize $(DREACH_OPT)
+	$(DREACH) -l 6 -k 6 scaled_prostate_infix_full.drh --precision 0.005 --visualize $(OPT)
+
+clean:
+	rm -f *.preprocessed.drh
+	rm -f *.smt2
+	rm -f *.json
+	rm -f *.proof

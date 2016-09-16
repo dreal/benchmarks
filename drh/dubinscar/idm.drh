@@ -1,0 +1,57 @@
+#define K 1
+#define vf 5
+#define Dmin 5
+#define Dmax 10
+#define Acc 5
+#define Dec -5
+
+[0, 100] x;
+[0, 100] xf;
+[0, 10] v;
+
+[0, 30] time;
+[0, 30] tau;
+
+{ mode 1; //distance keeping
+    invt:
+	xf - x > Dmin;
+	xf - x < Dmax;
+    flow:
+	d/dt[x] = v;
+	d/dt[v] = -K*(v - vf);
+	d/dt[xf] = vf;
+	d/dt[tau] = 1;
+    jump:
+	(x-xf)>(Dmax-1) ==> @2 (x'=x);
+	(x-xf)<(Dmin+1) ==> @3 (x'=x);
+}
+
+{ mode 2; //accelerate
+    invt:
+	xf - x > Dmax-2;
+    flow:
+	d/dt[x] = v;
+	d/dt[v] = Acc;
+	d/dt[xf] = vf;
+	d/dt[tau] = 1;
+    jump:
+	(x-xf) < Dmax ==> @1 (x'=x);
+}
+
+{ mode 3; //decelerate
+    invt:
+	xf - x < Dmin+2;
+    flow:
+	d/dt[x] = v;
+	d/dt[v] = Dec;
+	d/dt[xf] = vf;
+	d/dt[tau] = 1;
+    jump:
+	(x-xf) > Dmin ==> @1 (x'=x);
+}
+		
+init:
+@2  (and (xf-x>10) (x=0) (v = vf) (tau = 0));
+
+goal:
+@1  (and (xf-x<1) );
